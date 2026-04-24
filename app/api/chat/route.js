@@ -74,9 +74,12 @@ export async function POST(request) {
       );
     }
 
-    // Check if Ollama URL is configured
-    const ollamaUrl = process.env.OLLAMA_API_URL || 'http://localhost:11434';
-    const ollamaModel = process.env.OLLAMA_MODEL || 'llama3.2';
+    // Check if Groq API key is configured
+    const groqApiKey = process.env.GROQ_API_KEY;
+    
+    if (!groqApiKey) {
+      throw new Error('GROQ_API_KEY is not configured');
+    }
 
     // Build conversation context
     const messages = [
@@ -94,33 +97,33 @@ export async function POST(request) {
       }
     ];
 
-    // Call Ollama API
-    const response = await fetch(`${ollamaUrl}/api/chat`, {
+    // Call Groq API
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
+        'Authorization': `Bearer ${groqApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: ollamaModel,
+        model: 'llama-3.3-70b-versatile',
         messages: messages,
-        stream: false,
-        options: {
-          temperature: 0.7,
-          top_p: 0.9,
-        }
+        temperature: 0.7,
+        max_tokens: 1024,
+        top_p: 0.9,
       }),
     });
 
     if (!response.ok) {
-      throw new Error(`Ollama API error: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`Groq API error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
     }
 
     const data = await response.json();
-    const aiResponse = data.message?.content || 'I apologize, but I encountered an issue generating a response.';
+    const aiResponse = data.choices?.[0]?.message?.content || 'I apologize, but I encountered an issue generating a response.';
 
     return NextResponse.json({
       response: aiResponse,
-      model: ollamaModel
+      model: 'llama-3.3-70b-versatile'
     });
 
   } catch (error) {
