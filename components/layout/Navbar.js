@@ -19,7 +19,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 50)
       
       // Update active section based on scroll position
-      const sections = ['skills', 'experience', 'projects', 'contact']
+      const sections = ['skills', 'experience', 'education', 'projects', 'contact']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -30,12 +30,12 @@ export default function Navbar() {
       })
       if (current) setActiveSection(current)
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = ['Skills', 'Experience', 'Projects', 'Contact']
+  const navItems = ['Skills', 'Experience', 'Education', 'Projects', 'Contact']
 
   return (
     <motion.nav

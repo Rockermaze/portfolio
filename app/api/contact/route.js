@@ -1,17 +1,29 @@
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  subject: z.string().min(3, "Subject must be at least 3 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
 
 export async function POST(request) {
   try {
-    const { name, email, subject, message } = await request.json();
+    const body = await request.json();
 
-    // Validate input
-    if (!name || !email || !subject || !message) {
+    // Validate input with Zod
+    const validation = contactSchema.safeParse(body);
+
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: validation.error.errors[0].message },
         { status: 400 }
       );
     }
+
+    const { name, email, subject, message } = validation.data;
 
     // Check if environment variables are set
     if (!process.env.EMAIL_USER || !process.env.EMAIL_APP_PASSWORD) {

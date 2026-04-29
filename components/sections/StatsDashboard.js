@@ -96,8 +96,23 @@ function StatCard({ icon, value, label, suffix, color, glow, bar, delay }) {
 
 export default function StatsDashboard() {
   return (
-    <section className="py-32 px-6 lg:px-16 xl:px-24 relative overflow-hidden">
+    <section className="py-16 sm:py-24 md:py-32 px-6 lg:px-16 xl:px-24 relative overflow-hidden">
       <div className="max-w-[1600px] mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 md:mb-16"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-[2px] w-12 bg-techno-blue"></div>
+            <span className="text-techno-blue font-mono text-sm uppercase tracking-[0.3em]">
+              System_Metrics
+            </span>
+          </div>
+        </motion.div>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, idx) => (
             <StatCard key={idx} {...stat} delay={idx * 0.1} />

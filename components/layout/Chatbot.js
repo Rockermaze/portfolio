@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown"
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
+    { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\n**Powered by Groq AI** 🚀\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
   ])
   const [inputValue, setInputValue] = useState("")
   const [isMounted, setIsMounted] = useState(false)

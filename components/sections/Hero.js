@@ -6,20 +6,15 @@ import Image from "next/image"
 import ParticleBackground from "../effects/ParticleBackground"
 import MagneticButton from "../interactions/MagneticButton"
 import GlitchText from "../interactions/GlitchText"
+import { portfolioData } from "@/data/portfolio"
 
 export default function Hero() {
   const [typedText, setTypedText] = useState("")
   const [typedSpec, setTypedSpec] = useState("")
   const [specIndex, setSpecIndex] = useState(0)
 
-  const fullName = "Rudra Ka.Patel"
-  const specializations = [
-    "Python Developer",
-    "MERN Stack Developer",
-    "AI/ML Engineer",
-    "Backend Specialist",
-    "Full Stack Developer"
-  ]
+  const fullName = portfolioData.name
+  const specializations = portfolioData.specializations
 
   // Type name once on mount
   useEffect(() => {
@@ -130,7 +125,7 @@ export default function Hero() {
               className="mb-10"
             >
               <p className="text-xl md:text-2xl xl:text-3xl text-text-secondary leading-relaxed max-w-2xl text-enhanced">
-                Building real-time intelligent systems and scalable platforms that drive measurable business impact through cutting-edge AI/ML solutions
+                {portfolioData.heroDescription}
               </p>
             </motion.div>
 
@@ -143,6 +138,7 @@ export default function Hero() {
             >
               <MagneticButton
                 href="#projects"
+                aria-label="View portfolio projects"
                 className="group relative px-10 py-5 font-mono font-bold tracking-widest text-sm transition-all duration-300 overflow-hidden border-2 border-techno-cyan text-techno-cyan shadow-glow-cyan"
               >
                 <div className="absolute inset-0 bg-techno-cyan translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300"></div>
@@ -154,6 +150,7 @@ export default function Hero() {
 
               <MagneticButton
                 href="#contact"
+                aria-label="Get in touch"
                 className="group relative px-10 py-5 font-mono font-bold tracking-widest text-sm transition-all duration-300 overflow-hidden border-2 border-white/30 text-white"
               >
                 <div className="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300"></div>
@@ -171,9 +168,9 @@ export default function Hero() {
               transition={{ delay: 1.1 }}
             >
               <div className="h-px w-16 bg-gradient-to-r from-techno-cyan/50 to-transparent"></div>
-              
+
               <a
-                href={process.env.NEXT_PUBLIC_GITHUB}
+                href={portfolioData.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-14 h-14 flex items-center justify-center border-2 border-white/10 hover:border-techno-cyan transition-all duration-300 hover:shadow-glow-cyan"
@@ -185,7 +182,7 @@ export default function Hero() {
               </a>
 
               <a
-                href={process.env.NEXT_PUBLIC_LINKEDIN}
+                href={portfolioData.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-14 h-14 flex items-center justify-center border-2 border-white/10 hover:border-techno-cyan transition-all duration-300 hover:shadow-glow-cyan"
@@ -197,7 +194,7 @@ export default function Hero() {
               </a>
 
               <a
-                href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
+                href={`mailto:${portfolioData.email}`}
                 className="group relative w-14 h-14 flex items-center justify-center border-2 border-white/10 hover:border-techno-cyan transition-all duration-300 hover:shadow-glow-cyan"
                 aria-label="Email Contact"
               >
