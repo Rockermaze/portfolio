@@ -1,10 +1,47 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, Component } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import ReactMarkdown from "react-markdown"
 
-export default function Chatbot() {
+// Error Boundary for Chatbot
+class ChatbotErrorBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false, error: null }
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error }
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Chatbot Error:', error, errorInfo)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="fixed bottom-6 right-6 z-[100]">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.location.reload()}
+            className="w-14 h-14 bg-red-500/90 border border-red-400/50 flex items-center justify-center shadow-lg group relative overflow-hidden backdrop-blur-sm"
+          >
+            <span className="relative z-10 text-white font-mono text-xs font-bold">
+              ⚠️
+            </span>
+          </motion.button>
+        </div>
+      )
+    }
+
+    return this.props.children
+  }
+}
+
+function ChatbotContent() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
     { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\n**Powered by Groq AI** 🚀\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
@@ -139,26 +176,28 @@ export default function Chatbot() {
                         <span className="text-techno-cyan mr-2 font-semibold">[AI]:</span>
                       )}
                       {msg.role === 'bot' ? (
-                        <ReactMarkdown
-                          className="font-mono text-xs leading-relaxed"
-                          components={{
-                            p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                            strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
-                            em: ({node, ...props}) => <em className="italic" {...props} />,
-                            ul: ({node, ...props}) => <ul className="list-disc ml-4 my-1 space-y-0.5" {...props} />,
-                            ol: ({node, ...props}) => <ol className="list-decimal ml-4 my-1 space-y-0.5" {...props} />,
-                            li: ({node, ...props}) => <li className="text-xs" {...props} />,
-                            h1: ({node, ...props}) => <h1 className="text-xs font-bold mb-1 mt-2" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-xs font-bold mb-1 mt-2" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-xs font-bold mb-1 mt-1" {...props} />,
-                            code: ({node, inline, ...props}) => 
-                              inline 
-                                ? <code className="bg-techno-cyan/20 px-1 rounded text-xs" {...props} />
-                                : <code className="block bg-black/50 p-2 rounded my-1 text-xs" {...props} />,
-                          }}
-                        >
-                          {msg.text}
-                        </ReactMarkdown>
+                        <div className="inline">
+                          <ReactMarkdown
+                            className="inline font-mono text-xs leading-relaxed"
+                            components={{
+                              p: ({node, ...props}) => <span className="inline" {...props} />,
+                              strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
+                              em: ({node, ...props}) => <em className="italic" {...props} />,
+                              ul: ({node, ...props}) => <ul className="list-disc ml-4 my-1 space-y-0.5 block" {...props} />,
+                              ol: ({node, ...props}) => <ol className="list-decimal ml-4 my-1 space-y-0.5 block" {...props} />,
+                              li: ({node, ...props}) => <li className="text-xs" {...props} />,
+                              h1: ({node, ...props}) => <div className="text-xs font-bold mb-1 mt-2 block" {...props} />,
+                              h2: ({node, ...props}) => <div className="text-xs font-bold mb-1 mt-2 block" {...props} />,
+                              h3: ({node, ...props}) => <div className="text-xs font-bold mb-1 mt-1 block" {...props} />,
+                              code: ({node, inline, ...props}) => 
+                                inline 
+                                  ? <code className="bg-techno-cyan/20 px-1 rounded text-xs" {...props} />
+                                  : <code className="block bg-black/50 p-2 rounded my-1 text-xs" {...props} />,
+                            }}
+                          >
+                            {msg.text}
+                          </ReactMarkdown>
+                        </div>
                       ) : (
                         <span className="whitespace-pre-wrap">{msg.text}</span>
                       )}
@@ -247,5 +286,13 @@ export default function Chatbot() {
         )}
       </motion.button>
     </div>
+  )
+}
+
+export default function Chatbot() {
+  return (
+    <ChatbotErrorBoundary>
+      <ChatbotContent />
+    </ChatbotErrorBoundary>
   )
 }
