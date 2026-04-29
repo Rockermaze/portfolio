@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import ReactMarkdown from "react-markdown"
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\nPowered by Groq AI 🚀\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
+    { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\n**Powered by Groq AI** 🚀\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
   ])
   const [inputValue, setInputValue] = useState("")
   const [isMounted, setIsMounted] = useState(false)
@@ -137,7 +138,30 @@ export default function Chatbot() {
                       {msg.role === 'bot' && (
                         <span className="text-techno-cyan mr-2 font-semibold">[AI]:</span>
                       )}
-                      <span className="whitespace-pre-wrap">{msg.text}</span>
+                      {msg.role === 'bot' ? (
+                        <ReactMarkdown
+                          className="font-mono text-xs leading-relaxed"
+                          components={{
+                            p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                            strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
+                            em: ({node, ...props}) => <em className="italic" {...props} />,
+                            ul: ({node, ...props}) => <ul className="list-disc ml-4 my-1 space-y-0.5" {...props} />,
+                            ol: ({node, ...props}) => <ol className="list-decimal ml-4 my-1 space-y-0.5" {...props} />,
+                            li: ({node, ...props}) => <li className="text-xs" {...props} />,
+                            h1: ({node, ...props}) => <h1 className="text-xs font-bold mb-1 mt-2" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-xs font-bold mb-1 mt-2" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-xs font-bold mb-1 mt-1" {...props} />,
+                            code: ({node, inline, ...props}) => 
+                              inline 
+                                ? <code className="bg-techno-cyan/20 px-1 rounded text-xs" {...props} />
+                                : <code className="block bg-black/50 p-2 rounded my-1 text-xs" {...props} />,
+                          }}
+                        >
+                          {msg.text}
+                        </ReactMarkdown>
+                      ) : (
+                        <span className="whitespace-pre-wrap">{msg.text}</span>
+                      )}
                     </div>
                   </motion.div>
                 ))}
