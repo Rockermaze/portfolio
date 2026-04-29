@@ -144,24 +144,25 @@ export default function Chatbot() {
                             components={{
                               strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
                               em: ({node, ...props}) => <em className="italic text-techno-cyan" {...props} />,
-                              p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                              ul: ({node, ...props}) => <ul className="list-none ml-0 space-y-1" {...props} />,
-                              ol: ({node, ...props}) => <ol className="list-decimal ml-4 space-y-1" {...props} />,
-                              li: ({node, ...props}) => <li className="mb-1" {...props} />,
+                              p: ({node, ...props}) => <p className="mb-2 last:mb-0 whitespace-pre-wrap" {...props} />,
+                              ul: ({node, ...props}) => <ul className="list-disc ml-4 space-y-1 my-2" {...props} />,
+                              ol: ({node, ...props}) => <ol className="list-decimal ml-4 space-y-1 my-2" {...props} />,
+                              li: ({node, ...props}) => <li className="mb-1 ml-1" {...props} />,
                               code: ({node, inline, ...props}) => 
                                 inline 
                                   ? <code className="bg-techno-cyan/20 px-1 rounded text-techno-cyan" {...props} />
-                                  : <code className="block bg-black/50 p-2 rounded my-2 text-techno-cyan" {...props} />,
-                              h1: ({node, ...props}) => <h1 className="text-base font-bold text-white mb-2" {...props} />,
-                              h2: ({node, ...props}) => <h2 className="text-sm font-bold text-white mb-2" {...props} />,
-                              h3: ({node, ...props}) => <h3 className="text-xs font-bold text-techno-cyan mb-1" {...props} />,
+                                  : <code className="block bg-black/50 p-2 rounded my-2 text-techno-cyan whitespace-pre-wrap" {...props} />,
+                              h1: ({node, ...props}) => <h1 className="text-base font-bold text-white mb-2 mt-2" {...props} />,
+                              h2: ({node, ...props}) => <h2 className="text-sm font-bold text-white mb-2 mt-2" {...props} />,
+                              h3: ({node, ...props}) => <h3 className="text-xs font-bold text-techno-cyan mb-1 mt-1" {...props} />,
+                              br: ({node, ...props}) => <br {...props} />,
                             }}
                           >
                             {msg.text}
                           </ReactMarkdown>
                         </div>
                       ) : (
-                        <span className="whitespace-pre-line">{msg.text}</span>
+                        <span className="whitespace-pre-wrap">{msg.text}</span>
                       )}
                     </div>
                   </motion.div>
