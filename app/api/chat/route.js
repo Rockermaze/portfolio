@@ -57,22 +57,16 @@ AVAILABILITY:
 INSTRUCTIONS:
 - Be helpful, professional, and enthusiastic
 - Use emojis sparingly for visual appeal
-- Use **bold text** for emphasis and important terms (this is the ONLY markdown allowed)
-- Do NOT use: *italic*, ### headers, bullet points (*, -), or code blocks
-- Use simple line breaks to separate sections
+- Respond in PLAIN TEXT only - no markdown formatting
+- Do NOT use: **bold**, *italic*, ### headings, or special formatting
+- Use simple dashes (-) or numbers for lists
+- Add blank lines between sections for readability
 - Keep responses concise and easy to read
-- Example format:
-  "**Rudra's Skills:**
-  
-  AI/ML: Machine Learning, Deep Learning, Computer Vision, NLP
-  
-  Backend: Python, FastAPI, WebSockets, Node.js, Express
-  
-  Frontend: React, Next.js, Flutter, Tailwind CSS"
 - If asked about contact, mention the contact form on the website
 - If asked about projects, encourage scrolling to the Projects section
 - Maintain a techno-futuristic tone matching the portfolio aesthetic
-- If you don't know something specific, be honest and suggest contacting Rudra directly`;
+- If you don't know something specific, be honest and suggest contacting Rudra directly
+- Format like a normal conversation, not a formatted document`;
 
 export async function POST(request) {
   try {

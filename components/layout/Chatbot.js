@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import ReactMarkdown from "react-markdown"
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\n**Powered by Groq AI** 🚀\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
+    { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\nPowered by Groq AI 🚀\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
   ])
   const [inputValue, setInputValue] = useState("")
   const [isMounted, setIsMounted] = useState(false)
@@ -138,31 +137,7 @@ export default function Chatbot() {
                       {msg.role === 'bot' && (
                         <span className="text-techno-cyan mr-2 font-semibold">[AI]:</span>
                       )}
-                      {msg.role === 'bot' ? (
-                        <div className="markdown-content">
-                          <ReactMarkdown
-                            components={{
-                              // Only allow bold text, render everything else as plain text
-                              strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
-                              // Render paragraphs as plain text with line breaks
-                              p: ({node, ...props}) => <span className="block mb-2 last:mb-0" {...props} />,
-                              // Remove all other formatting - render as plain text
-                              em: ({node, children, ...props}) => <>{children}</>,
-                              h1: ({node, children, ...props}) => <>{children}</>,
-                              h2: ({node, children, ...props}) => <>{children}</>,
-                              h3: ({node, children, ...props}) => <>{children}</>,
-                              ul: ({node, children, ...props}) => <>{children}</>,
-                              ol: ({node, children, ...props}) => <>{children}</>,
-                              li: ({node, children, ...props}) => <>{children}</>,
-                              code: ({node, children, ...props}) => <>{children}</>,
-                            }}
-                          >
-                            {msg.text}
-                          </ReactMarkdown>
-                        </div>
-                      ) : (
-                        <span className="whitespace-pre-wrap">{msg.text}</span>
-                      )}
+                      <span className="whitespace-pre-wrap">{msg.text}</span>
                     </div>
                   </motion.div>
                 ))}
