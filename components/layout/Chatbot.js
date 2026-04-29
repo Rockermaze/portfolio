@@ -142,20 +142,19 @@ export default function Chatbot() {
                         <div className="markdown-content">
                           <ReactMarkdown
                             components={{
+                              // Only allow bold text, render everything else as plain text
                               strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
-                              em: ({node, ...props}) => <em className="italic text-techno-cyan" {...props} />,
-                              p: ({node, ...props}) => <p className="mb-2 last:mb-0 whitespace-pre-wrap" {...props} />,
-                              ul: ({node, ...props}) => <ul className="list-disc ml-4 space-y-1 my-2" {...props} />,
-                              ol: ({node, ...props}) => <ol className="list-decimal ml-4 space-y-1 my-2" {...props} />,
-                              li: ({node, ...props}) => <li className="mb-1 ml-1" {...props} />,
-                              code: ({node, inline, ...props}) => 
-                                inline 
-                                  ? <code className="bg-techno-cyan/20 px-1 rounded text-techno-cyan" {...props} />
-                                  : <code className="block bg-black/50 p-2 rounded my-2 text-techno-cyan whitespace-pre-wrap" {...props} />,
-                              h1: ({node, ...props}) => <h1 className="text-base font-bold text-white mb-2 mt-2" {...props} />,
-                              h2: ({node, ...props}) => <h2 className="text-sm font-bold text-white mb-2 mt-2" {...props} />,
-                              h3: ({node, ...props}) => <h3 className="text-xs font-bold text-techno-cyan mb-1 mt-1" {...props} />,
-                              br: ({node, ...props}) => <br {...props} />,
+                              // Render paragraphs as plain text with line breaks
+                              p: ({node, ...props}) => <span className="block mb-2 last:mb-0" {...props} />,
+                              // Remove all other formatting - render as plain text
+                              em: ({node, children, ...props}) => <>{children}</>,
+                              h1: ({node, children, ...props}) => <>{children}</>,
+                              h2: ({node, children, ...props}) => <>{children}</>,
+                              h3: ({node, children, ...props}) => <>{children}</>,
+                              ul: ({node, children, ...props}) => <>{children}</>,
+                              ol: ({node, children, ...props}) => <>{children}</>,
+                              li: ({node, children, ...props}) => <>{children}</>,
+                              code: ({node, children, ...props}) => <>{children}</>,
                             }}
                           >
                             {msg.text}
