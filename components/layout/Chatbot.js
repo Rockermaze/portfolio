@@ -1,47 +1,10 @@
 "use client"
 
-import { useState, useEffect, useRef, Component } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import ReactMarkdown from "react-markdown"
 
-// Error Boundary for Chatbot
-class ChatbotErrorBoundary extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false, error: null }
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error }
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Chatbot Error:', error, errorInfo)
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="fixed bottom-6 right-6 z-[100]">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => window.location.reload()}
-            className="w-14 h-14 bg-red-500/90 border border-red-400/50 flex items-center justify-center shadow-lg group relative overflow-hidden backdrop-blur-sm"
-          >
-            <span className="relative z-10 text-white font-mono text-xs font-bold">
-              ⚠️
-            </span>
-          </motion.button>
-        </div>
-      )
-    }
-
-    return this.props.children
-  }
-}
-
-function ChatbotContent() {
+export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
     { role: "bot", text: "⚡ SYSTEM_INITIALIZED\n\n**Powered by Groq AI** 🚀\n\nHello! I'm Rudra's AI assistant. I can answer questions about his skills, projects, experience, and more.\n\nWhat would you like to know?" }
@@ -142,8 +105,8 @@ function ChatbotContent() {
               <div className="p-4 border-b border-white/20 flex justify-between items-center bg-black/40">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-techno-cyan animate-pulse shadow-glow-cyan" />
-                  <span className="font-mono text-xs font-bold tracking-widest text-white">
-                    RK_ASSISTANT v1.0
+                  <span className="text-xs font-bold tracking-wider text-white">
+                    AI ASSISTANT v1.0
                   </span>
                 </div>
                 <button
@@ -167,32 +130,32 @@ function ChatbotContent() {
                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div className={`
-                      max-w-[85%] p-3 font-mono text-xs leading-relaxed
+                      max-w-[85%] p-3 text-sm leading-relaxed
                       ${msg.role === 'user'
                         ? 'bg-techno-cyan/20 border border-techno-cyan/40 text-white rounded-l-lg rounded-tr-lg shadow-lg'
                         : 'bg-black/40 border border-white/20 text-white/90 rounded-r-lg rounded-tl-lg shadow-lg'}
                     `}>
                       {msg.role === 'bot' && (
-                        <span className="text-techno-cyan mr-2 font-semibold">[AI]:</span>
+                        <span className="text-techno-cyan mr-2 font-semibold text-xs">[AI]:</span>
                       )}
                       {msg.role === 'bot' ? (
-                        <div className="inline">
+                        <div className="markdown-content">
                           <ReactMarkdown
-                            className="inline font-mono text-xs leading-relaxed"
                             components={{
-                              p: ({node, ...props}) => <span className="inline" {...props} />,
                               strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
-                              em: ({node, ...props}) => <em className="italic" {...props} />,
-                              ul: ({node, ...props}) => <ul className="list-disc ml-4 my-1 space-y-0.5 block" {...props} />,
-                              ol: ({node, ...props}) => <ol className="list-decimal ml-4 my-1 space-y-0.5 block" {...props} />,
-                              li: ({node, ...props}) => <li className="text-xs" {...props} />,
-                              h1: ({node, ...props}) => <div className="text-xs font-bold mb-1 mt-2 block" {...props} />,
-                              h2: ({node, ...props}) => <div className="text-xs font-bold mb-1 mt-2 block" {...props} />,
-                              h3: ({node, ...props}) => <div className="text-xs font-bold mb-1 mt-1 block" {...props} />,
+                              em: ({node, ...props}) => <em className="italic text-techno-cyan" {...props} />,
+                              p: ({node, ...props}) => <p className="mb-2 last:mb-0 whitespace-pre-wrap" {...props} />,
+                              ul: ({node, ...props}) => <ul className="list-disc ml-4 space-y-1 my-2" {...props} />,
+                              ol: ({node, ...props}) => <ol className="list-decimal ml-4 space-y-1 my-2" {...props} />,
+                              li: ({node, ...props}) => <li className="mb-1 ml-1" {...props} />,
                               code: ({node, inline, ...props}) => 
                                 inline 
-                                  ? <code className="bg-techno-cyan/20 px-1 rounded text-xs" {...props} />
-                                  : <code className="block bg-black/50 p-2 rounded my-1 text-xs" {...props} />,
+                                  ? <code className="bg-techno-cyan/20 px-1 rounded text-techno-cyan text-xs" {...props} />
+                                  : <code className="block bg-black/50 p-2 rounded my-2 text-techno-cyan text-xs whitespace-pre-wrap" {...props} />,
+                              h1: ({node, ...props}) => <h1 className="text-base font-bold text-white mb-2 mt-2" {...props} />,
+                              h2: ({node, ...props}) => <h2 className="text-sm font-bold text-white mb-2 mt-2" {...props} />,
+                              h3: ({node, ...props}) => <h3 className="text-sm font-bold text-techno-cyan mb-1 mt-1" {...props} />,
+                              br: ({node, ...props}) => <br {...props} />,
                             }}
                           >
                             {msg.text}
@@ -214,7 +177,7 @@ function ChatbotContent() {
                   >
                     <div className="bg-black/40 border border-white/20 rounded-r-lg rounded-tl-lg shadow-lg p-3">
                       <div className="flex items-center gap-1">
-                        <span className="text-techno-cyan font-mono text-xs font-semibold">[AI]:</span>
+                        <span className="text-techno-cyan text-xs font-semibold">[AI]:</span>
                         <div className="flex gap-1 ml-2">
                           <motion.div
                             className="w-2 h-2 bg-techno-cyan rounded-full"
@@ -248,15 +211,15 @@ function ChatbotContent() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   disabled={isTyping}
-                  placeholder={isTyping ? "AI is thinking..." : "ENTER_QUERY..."}
-                  className="flex-1 bg-black/50 border border-white/20 rounded p-2 font-mono text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-techno-cyan focus:bg-black/60 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  placeholder={isTyping ? "AI is thinking..." : "Type your message..."}
+                  className="flex-1 bg-black/50 border border-white/20 rounded p-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-techno-cyan focus:bg-black/60 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button
                   type="submit"
                   disabled={isTyping || !inputValue.trim()}
-                  className="bg-techno-cyan text-black px-4 rounded font-mono text-[10px] font-bold hover:shadow-glow-cyan hover:bg-techno-cyan/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-techno-cyan text-black px-4 rounded text-xs font-bold hover:shadow-glow-cyan hover:bg-techno-cyan/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isTyping ? "..." : "EXEC"}
+                  {isTyping ? "..." : "SEND"}
                 </button>
               </form>
             </div>
@@ -272,7 +235,7 @@ function ChatbotContent() {
         className="w-14 h-14 bg-black/90 border border-techno-cyan/50 flex items-center justify-center shadow-glow-cyan group relative overflow-hidden backdrop-blur-sm"
       >
         <div className="absolute inset-0 bg-techno-cyan translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-        <span className="relative z-10 text-techno-cyan group-hover:text-black font-mono text-xl font-bold">
+        <span className="relative z-10 text-techno-cyan group-hover:text-black text-xl font-bold">
           {isOpen ? "✕" : "AI"}
         </span>
 
@@ -286,13 +249,5 @@ function ChatbotContent() {
         )}
       </motion.button>
     </div>
-  )
-}
-
-export default function Chatbot() {
-  return (
-    <ChatbotErrorBoundary>
-      <ChatbotContent />
-    </ChatbotErrorBoundary>
   )
 }
