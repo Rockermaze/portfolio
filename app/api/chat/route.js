@@ -135,7 +135,7 @@ export async function POST(request) {
   } catch (error) {
     console.error('Chat API error:', error);
 
-    // Fallback response if Ollama is not available
+    // Fallback response if Groq API is unavailable
     return NextResponse.json(
       {
         error: 'AI service unavailable',

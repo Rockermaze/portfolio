@@ -15,10 +15,17 @@ Your contact information is now centralized in environment variables for easy ma
 Your `.env.local` file contains:
 
 ```env
+# Contact Information
 NEXT_PUBLIC_EMAIL=patelrudraj1@gmail.com
 NEXT_PUBLIC_GITHUB=https://github.com/Rockermaze
 NEXT_PUBLIC_LINKEDIN=https://www.linkedin.com/in/rudra-kapatel/
-NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xanyqwpb
+
+# Email Service (Nodemailer)
+EMAIL_USER=patelrudraj1@gmail.com
+EMAIL_APP_PASSWORD=your_app_password_here
+
+# AI Chatbot (Groq)
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
 ---
@@ -33,8 +40,13 @@ NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xanyqwpb
 ### Contact Section
 - ✅ Email display and link
 - ✅ LinkedIn display and link
-- ✅ Contact form endpoint
+- ✅ Contact form (Nodemailer)
 - ✅ Error message fallback email
+
+### AI Chatbot
+- ✅ Groq API for intelligent responses
+- ✅ Context-aware conversations
+- ✅ Portfolio information assistant
 
 ---
 
@@ -76,7 +88,13 @@ NEXT_PUBLIC_LINKEDIN=https://www.linkedin.com/in/new-profile/
 
 ### Change Form Endpoint
 ```env
-NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/new-form-id
+EMAIL_USER=your-email@gmail.com
+EMAIL_APP_PASSWORD=your_gmail_app_password
+```
+
+### Change AI Model
+```env
+GROQ_API_KEY=your_new_groq_api_key
 ```
 
 After changing, restart dev server:
@@ -86,9 +104,9 @@ npm run dev
 
 ---
 
-## For Production (Vercel)
+## For Production (Netlify/Vercel)
 
-When deploying to Vercel:
+When deploying:
 
 1. Go to your project settings
 2. Navigate to "Environment Variables"
@@ -96,7 +114,9 @@ When deploying to Vercel:
    - `NEXT_PUBLIC_EMAIL`
    - `NEXT_PUBLIC_GITHUB`
    - `NEXT_PUBLIC_LINKEDIN`
-   - `NEXT_PUBLIC_FORMSPREE_ENDPOINT`
+   - `EMAIL_USER`
+   - `EMAIL_APP_PASSWORD`
+   - `GROQ_API_KEY`
 4. Redeploy
 
 ---
@@ -143,9 +163,14 @@ All links should now work:
 - Check for typos in variable names
 
 ### Form not sending?
-- Verify `NEXT_PUBLIC_FORMSPREE_ENDPOINT` is correct
-- Check Formspree dashboard for form status
-- Confirm email in first submission
+- Verify `EMAIL_USER` and `EMAIL_APP_PASSWORD` are correct
+- Check Gmail app password is still valid
+- Test locally first
+
+### Chatbot not responding?
+- Verify `GROQ_API_KEY` is correct
+- Check Groq API status at https://console.groq.com
+- Check browser console for errors
 
 ---
 
