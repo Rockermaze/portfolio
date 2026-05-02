@@ -27,7 +27,6 @@ import Experience from "../components/sections/Experience"
 import Education from "../components/sections/Education"
 import Projects from "../components/sections/Projects"
 import Contact from "../components/sections/Contact"
-import StatsDashboard from "../components/sections/StatsDashboard"
 
 export default function Home() {
   return (
@@ -45,7 +44,6 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <StatsDashboard />
         <Skills />
         <Experience />
         <Education />

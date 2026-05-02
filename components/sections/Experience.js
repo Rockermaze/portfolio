@@ -228,9 +228,9 @@ export default function Experience() {
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 md:mb-8 font-heading tracking-tighter leading-none text-enhanced">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-8 sm:mb-12 md:mb-16 font-heading tracking-tighter leading-none text-enhanced">
             LEARNING<br/>
-            <span className="text-transparent stroke-text" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.5)', WebkitTextStrokeWidth: 'clamp(1px, 0.4vw, 3px)' }}>PROGRESSION</span>
+            <span className="text-transparent stroke-text" style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.5)', WebkitTextStrokeWidth: 'clamp(1px, 0.3vw, 2px)' }}>PROGRESSION</span>
           </h2>
         </motion.div>
 

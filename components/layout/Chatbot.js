@@ -136,10 +136,10 @@ export default function Chatbot() {
                         : 'bg-black/40 border border-white/20 text-white/90 rounded-r-lg rounded-tl-lg shadow-lg'}
                     `}>
                       {msg.role === 'bot' && (
-                        <span className="text-techno-cyan mr-2 font-semibold text-xs">[AI]:</span>
+                        <span className="text-techno-cyan mr-2 font-semibold text-sm">[AI]:</span>
                       )}
                       {msg.role === 'bot' ? (
-                        <div className="markdown-content">
+                        <div className="markdown-content text-sm">
                           <ReactMarkdown
                             components={{
                               strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
@@ -150,8 +150,8 @@ export default function Chatbot() {
                               li: ({node, ...props}) => <li className="mb-1 ml-1" {...props} />,
                               code: ({node, inline, ...props}) => 
                                 inline 
-                                  ? <code className="bg-techno-cyan/20 px-1 rounded text-techno-cyan text-xs" {...props} />
-                                  : <code className="block bg-black/50 p-2 rounded my-2 text-techno-cyan text-xs whitespace-pre-wrap" {...props} />,
+                                  ? <code className="bg-techno-cyan/20 px-1 rounded text-techno-cyan text-sm" {...props} />
+                                  : <code className="block bg-black/50 p-2 rounded my-2 text-techno-cyan text-sm whitespace-pre-wrap" {...props} />,
                               h1: ({node, ...props}) => <h1 className="text-base font-bold text-white mb-2 mt-2" {...props} />,
                               h2: ({node, ...props}) => <h2 className="text-sm font-bold text-white mb-2 mt-2" {...props} />,
                               h3: ({node, ...props}) => <h3 className="text-sm font-bold text-techno-cyan mb-1 mt-1" {...props} />,
@@ -162,7 +162,7 @@ export default function Chatbot() {
                           </ReactMarkdown>
                         </div>
                       ) : (
-                        <span className="whitespace-pre-wrap">{msg.text}</span>
+                        <span className="whitespace-pre-wrap text-sm">{msg.text}</span>
                       )}
                     </div>
                   </motion.div>
@@ -177,7 +177,7 @@ export default function Chatbot() {
                   >
                     <div className="bg-black/40 border border-white/20 rounded-r-lg rounded-tl-lg shadow-lg p-3">
                       <div className="flex items-center gap-1">
-                        <span className="text-techno-cyan text-xs font-semibold">[AI]:</span>
+                        <span className="text-techno-cyan text-sm font-semibold">[AI]:</span>
                         <div className="flex gap-1 ml-2">
                           <motion.div
                             className="w-2 h-2 bg-techno-cyan rounded-full"

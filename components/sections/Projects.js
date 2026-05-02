@@ -5,7 +5,7 @@ import ProjectCard from "../ui/ProjectCard"
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-32 px-6 lg:px-16 xl:px-24 overflow-hidden">
+    <section id="projects" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-16 xl:px-24 overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-techno-blue/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-techno-magenta/10 rounded-full blur-3xl" />
@@ -16,7 +16,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-left mb-24"
+          className="text-left mb-16 sm:mb-20 md:mb-24"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="h-[2px] w-16 bg-techno-cyan"></div>
@@ -25,12 +25,12 @@ export default function Projects() {
             </span>
           </div>
 
-          <h2 className="text-6xl md:text-8xl xl:text-9xl font-bold mb-8 font-heading tracking-tighter leading-none text-enhanced">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-8 sm:mb-12 md:mb-16 font-heading tracking-tighter leading-none text-enhanced">
             FEATURED<br/>
-            <span className="text-transparent stroke-text" style={{ WebkitTextStroke: '3px rgba(255,255,255,0.5)' }}>PROJECTS</span>
+            <span className="text-transparent stroke-text" style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.5)', WebkitTextStrokeWidth: 'clamp(1px, 0.3vw, 2px)' }}>PROJECTS</span>
           </h2>
           
-          <p className="text-xl md:text-2xl xl:text-3xl text-text-secondary max-w-3xl text-enhanced leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl text-text-secondary max-w-3xl text-enhanced leading-relaxed">
             Real-world applications showcasing expertise in AI/ML, full-stack development, and system architecture
           </p>
         </motion.div>
