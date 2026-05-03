@@ -98,9 +98,9 @@ export default function Chatbot() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="mb-4 w-[90vw] sm:w-96 md:w-[450px] lg:w-[500px]"
+            className="mb-4 w-[95vw] sm:w-[450px] md:w-[500px] lg:w-[550px]"
           >
-            <div className="bg-black/80 backdrop-blur-xl border border-techno-cyan/30 h-[450px] flex flex-col shadow-2xl overflow-hidden rounded-lg">
+            <div className="bg-black/80 backdrop-blur-xl border border-techno-cyan/30 h-[500px] sm:h-[550px] md:h-[600px] flex flex-col shadow-2xl overflow-hidden rounded-lg">
               {/* Header */}
               <div className="p-4 border-b border-white/20 flex justify-between items-center bg-black/40">
                 <div className="flex items-center gap-2">
@@ -111,7 +111,7 @@ export default function Chatbot() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors text-xl"
                 >
                   ✕
                 </button>
@@ -130,16 +130,16 @@ export default function Chatbot() {
                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div className={`
-                      max-w-[85%] p-3 text-sm leading-relaxed
+                      max-w-[85%] p-4 text-sm sm:text-base leading-relaxed
                       ${msg.role === 'user'
-                        ? 'bg-techno-cyan/20 border border-techno-cyan/40 text-white rounded-l-lg rounded-tr-lg shadow-lg'
-                        : 'bg-black/40 border border-white/20 text-white/90 rounded-r-lg rounded-tl-lg shadow-lg'}
+                        ? 'bg-techno-cyan/20 border border-techno-cyan/40 text-white rounded-l-xl rounded-tr-xl shadow-lg'
+                        : 'bg-black/40 border border-white/20 text-white/90 rounded-r-xl rounded-tl-xl shadow-lg'}
                     `}>
                       {msg.role === 'bot' && (
-                        <span className="text-techno-cyan mr-2 font-semibold text-sm">[AI]:</span>
+                        <span className="text-techno-cyan mr-2 font-semibold text-sm sm:text-base">[AI]:</span>
                       )}
                       {msg.role === 'bot' ? (
-                        <div className="markdown-content text-sm">
+                        <div className="markdown-content text-sm sm:text-base">
                           <ReactMarkdown
                             components={{
                               strong: ({node, ...props}) => <strong className="font-bold text-white" {...props} />,
@@ -152,8 +152,8 @@ export default function Chatbot() {
                                 inline 
                                   ? <code className="bg-techno-cyan/20 px-1 rounded text-techno-cyan text-sm" {...props} />
                                   : <code className="block bg-black/50 p-2 rounded my-2 text-techno-cyan text-sm whitespace-pre-wrap" {...props} />,
-                              h1: ({node, ...props}) => <h1 className="text-base font-bold text-white mb-2 mt-2" {...props} />,
-                              h2: ({node, ...props}) => <h2 className="text-sm font-bold text-white mb-2 mt-2" {...props} />,
+                              h1: ({node, ...props}) => <h1 className="text-base sm:text-lg font-bold text-white mb-2 mt-2" {...props} />,
+                              h2: ({node, ...props}) => <h2 className="text-sm sm:text-base font-bold text-white mb-2 mt-2" {...props} />,
                               h3: ({node, ...props}) => <h3 className="text-sm font-bold text-techno-cyan mb-1 mt-1" {...props} />,
                               br: ({node, ...props}) => <br {...props} />,
                             }}
@@ -162,7 +162,7 @@ export default function Chatbot() {
                           </ReactMarkdown>
                         </div>
                       ) : (
-                        <span className="whitespace-pre-wrap text-sm">{msg.text}</span>
+                        <span className="whitespace-pre-wrap text-sm sm:text-base">{msg.text}</span>
                       )}
                     </div>
                   </motion.div>
@@ -175,9 +175,9 @@ export default function Chatbot() {
                     animate={{ opacity: 1, x: 0 }}
                     className="flex justify-start"
                   >
-                    <div className="bg-black/40 border border-white/20 rounded-r-lg rounded-tl-lg shadow-lg p-3">
+                    <div className="bg-black/40 border border-white/20 rounded-r-xl rounded-tl-xl shadow-lg p-4">
                       <div className="flex items-center gap-1">
-                        <span className="text-techno-cyan text-sm font-semibold">[AI]:</span>
+                        <span className="text-techno-cyan text-sm sm:text-base font-semibold">[AI]:</span>
                         <div className="flex gap-1 ml-2">
                           <motion.div
                             className="w-2 h-2 bg-techno-cyan rounded-full"
@@ -212,12 +212,12 @@ export default function Chatbot() {
                   onChange={(e) => setInputValue(e.target.value)}
                   disabled={isTyping}
                   placeholder={isTyping ? "AI is thinking..." : "Type your message..."}
-                  className="flex-1 bg-black/50 border border-white/20 rounded p-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-techno-cyan focus:bg-black/60 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-black/50 border border-white/20 rounded-lg p-3 text-sm sm:text-base text-white placeholder:text-white/40 focus:outline-none focus:border-techno-cyan focus:bg-black/60 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button
                   type="submit"
                   disabled={isTyping || !inputValue.trim()}
-                  className="bg-techno-cyan text-black px-4 rounded text-xs font-bold hover:shadow-glow-cyan hover:bg-techno-cyan/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-techno-cyan text-black px-5 py-3 rounded-lg text-xs sm:text-sm font-bold hover:shadow-glow-cyan hover:bg-techno-cyan/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isTyping ? "..." : "SEND"}
                 </button>
