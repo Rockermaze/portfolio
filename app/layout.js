@@ -27,6 +27,14 @@ export const metadata = {
   description: "Portfolio of Rudra Ka.Patel, a specialist in AI/ML, MERN stack, and intelligent system automation. Building scalable, high-impact technical solutions.",
   keywords: ["Rudra Ka.Patel", "Full Stack Developer", "AI Engineer", "ML Specialist", "Python Developer", "React Developer", "Next.js Portfolio"],
   authors: [{ name: "Rudra Ka.Patel" }],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-icon.svg', type: 'image/svg+xml' },
+    ],
+  },
   openGraph: {
     title: "Rudra Ka.Patel | AI & Full Stack Developer",
     description: "Building next-gen intelligent systems and scalable architecture",

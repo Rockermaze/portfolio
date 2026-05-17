@@ -22,6 +22,7 @@ const SimpleParticles = dynamic(() => import("../components/effects/SimplePartic
 const EasterEggs = dynamic(() => import("../components/effects/EasterEggs"), { ssr: false })
 
 // Section Components
+import About from "../components/sections/About"
 import Skills from "../components/sections/Skills"
 import Experience from "../components/sections/Experience"
 import Education from "../components/sections/Education"
@@ -44,9 +45,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <About />
         <Skills />
-        <Experience />
         <Education />
+        <Experience />
         <Projects />
         <ErrorBoundary>
           <Contact />

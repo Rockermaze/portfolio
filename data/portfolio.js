@@ -1,7 +1,7 @@
 export const portfolioData = {
   name: "Rudra Ka.Patel",
   title: "Full Stack Developer & AI/ML Engineer",
-  email: "your.email@example.com", // Placeholder
+  email: "patelrudraj1@gmail.com", // Placeholder
   socials: {
     github: "https://github.com/Rockermaze",
     linkedin: "https://linkedin.com/in/rudra-patel", // Placeholder
@@ -16,21 +16,9 @@ export const portfolioData = {
   heroDescription: "Building real-time intelligent systems and scalable platforms that drive measurable business impact through cutting-edge AI/ML solutions",
   projects: [
     {
-      title: "Sign Language Recognition System",
-      desc: "Real-time sign recognition system combining Machine Learning and Web technologies. Flutter streams camera frames to a FastAPI WebSocket server where ML models detect hand landmarks and classify signs.",
-      tech: "ML • FastAPI • WebSockets • Flutter",
-      icon: "🤟",
-      link: "https://github.com/Rockermaze",
-      isLive: true,
-      stars: 12,
-      forks: 5,
-      complexity: 5,
-    },
-    {
       title: "Smart POS System",
       desc: "Concept POS platform for mobile shops including vendor management, inventory tracking, transaction history, due payments and refund handling.",
       tech: "React • Node.js • MongoDB",
-      icon: "🏪",
       link: "https://github.com/Rockermaze",
       stars: 8,
       forks: 2,
@@ -40,7 +28,6 @@ export const portfolioData = {
       title: "Windows Voice Assistant",
       desc: "Voice assistant capable of executing OS commands such as shutdown, volume control and automation tasks.",
       tech: "Python • Speech Recognition",
-      icon: "🎤",
       link: "https://github.com/Rockermaze",
       stars: 15,
       forks: 3,
@@ -50,11 +37,20 @@ export const portfolioData = {
       title: "Task Manager App",
       desc: "Basic Flutter productivity app to manage daily tasks with add, edit and delete functionality.",
       tech: "Flutter",
-      icon: "✅",
       link: "https://github.com/Rockermaze",
       stars: 4,
       forks: 1,
       complexity: 2,
+    },
+    {
+      title: "Sign Language Recognition System",
+      desc: "Real-time sign recognition system combining Machine Learning and Web technologies. Flutter streams camera frames to a FastAPI WebSocket server where ML models detect hand landmarks and classify signs.",
+      tech: "ML • FastAPI • WebSockets • Flutter",
+      link: "https://github.com/Rockermaze",
+      isLive: true,
+      stars: 12,
+      forks: 5,
+      complexity: 5,
     }
   ]
 };

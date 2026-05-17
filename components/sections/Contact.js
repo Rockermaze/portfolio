@@ -63,32 +63,32 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-16 xl:px-24 overflow-hidden">
+    <section id="contact" className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-techno-cyan/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-techno-magenta/10 rounded-full blur-3xl" />
 
-      <div className="max-w-[1400px] mx-auto relative z-10">
+      <div className="max-w-[1200px] mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-left mb-16 sm:mb-20 md:mb-24"
+          className="text-left mb-8 sm:mb-10 md:mb-12"
         >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-[2px] w-16 bg-techno-cyan"></div>
-            <span className="text-techno-cyan font-mono text-sm uppercase tracking-[0.3em]">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="h-[2px] w-10 sm:w-12 bg-techno-cyan"></div>
+            <span className="text-techno-cyan font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em]">
               Comm_Channel
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-8 sm:mb-12 md:mb-16 font-heading tracking-tighter leading-none text-enhanced">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 font-heading tracking-tighter leading-none text-enhanced">
             INITIALIZE<br/>
             <span className="text-transparent stroke-text" style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.5)', WebkitTextStrokeWidth: 'clamp(1px, 0.3vw, 2px)' }}>CONNECTION</span>
           </h2>
           
-          <p className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-text-secondary max-w-3xl text-enhanced leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-text-secondary max-w-3xl text-enhanced leading-relaxed">
             Ready to collaborate on your next project? Let's create something exceptional together
           </p>
         </motion.div>
@@ -98,9 +98,9 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="relative bg-dark-card/30 border-2 border-white/5 p-12 md:p-16 overflow-hidden"
+          className="relative bg-dark-card/30 border-2 border-white/5 p-6 sm:p-8 md:p-12 lg:p-16 overflow-hidden"
         >
-          <div className="relative z-10 grid md:grid-cols-2 gap-16 items-start">
+          <div className="relative z-10 grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start">
             <div>
               {/* Availability Indicator */}
               <div className="flex items-center gap-3 mb-8">
@@ -108,28 +108,28 @@ export default function Contact() {
                 <span className="text-xs font-mono text-green-500 uppercase tracking-widest font-bold">Available for new projects</span>
               </div>
 
-              <p className="text-3xl md:text-4xl xl:text-5xl text-white font-heading tracking-tight mb-10 leading-tight text-enhanced">
+              <p className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-white font-heading tracking-tight mb-8 sm:mb-10 leading-tight text-enhanced">
                 Have a project in mind? Let's build something <span className="text-techno-cyan">extraordinary</span> together.
               </p>
 
-              <div className="space-y-6 mb-12">
-                <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="flex items-center gap-4 group/link">
-                  <div className="w-16 h-16 rounded-full border-2 border-white/10 flex items-center justify-center group-hover/link:border-techno-cyan group-hover/link:shadow-glow-cyan transition-all duration-500">
-                    <span className="text-3xl">📧</span>
+              <div className="space-y-5 sm:space-y-6 mb-10 sm:mb-12">
+                <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="flex items-center gap-3 sm:gap-4 group/link">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-2 border-white/10 flex items-center justify-center group-hover/link:border-techno-cyan group-hover/link:shadow-glow-cyan transition-all duration-500 flex-shrink-0">
+                    <span className="text-2xl sm:text-3xl">📧</span>
                   </div>
-                  <div>
-                    <div className="text-sm font-mono text-text-muted uppercase tracking-widest mb-1">Email_Protocol</div>
-                    <div className="text-white group-hover/link:text-techno-cyan transition-colors font-mono text-base break-all text-enhanced">{process.env.NEXT_PUBLIC_EMAIL}</div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] sm:text-xs font-mono text-text-muted uppercase tracking-widest mb-1">Email_Protocol</div>
+                    <div className="text-white group-hover/link:text-techno-cyan transition-colors font-mono text-sm sm:text-base break-all text-enhanced">{process.env.NEXT_PUBLIC_EMAIL}</div>
                   </div>
                 </a>
 
-                <a href={process.env.NEXT_PUBLIC_LINKEDIN} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group/link">
-                  <div className="w-16 h-16 rounded-full border-2 border-white/10 flex items-center justify-center group-hover/link:border-techno-cyan group-hover/link:shadow-glow-cyan transition-all duration-500">
-                    <span className="text-3xl">💼</span>
+                <a href={process.env.NEXT_PUBLIC_LINKEDIN} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 sm:gap-4 group/link">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-2 border-white/10 flex items-center justify-center group-hover/link:border-techno-cyan group-hover/link:shadow-glow-cyan transition-all duration-500 flex-shrink-0">
+                    <span className="text-2xl sm:text-3xl">💼</span>
                   </div>
-                  <div>
-                    <div className="text-sm font-mono text-text-muted uppercase tracking-widest mb-1">Network_Link</div>
-                    <div className="text-white group-hover/link:text-techno-cyan transition-colors font-mono text-base text-enhanced">linkedin.com/in/rudra-kapatel</div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] sm:text-xs font-mono text-text-muted uppercase tracking-widest mb-1">Network_Link</div>
+                    <div className="text-white group-hover/link:text-techno-cyan transition-colors font-mono text-sm sm:text-base text-enhanced break-words">linkedin.com/in/rudra-kapatel</div>
                   </div>
                 </a>
               </div>
@@ -285,18 +285,18 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="mt-20 pt-8 border-t border-white/10 text-center"
+          className="mt-16 sm:mt-20 pt-6 sm:pt-8 border-t border-white/10 text-center"
         >
-          <div className="space-y-4">
-            <p className="text-text-muted font-mono text-sm">
+          <div className="space-y-3 sm:space-y-4">
+            <p className="text-text-muted font-mono text-xs sm:text-sm px-4">
               <span className="text-techno-cyan">&lt;</span>
               Crafted with code, creativity, and late-night debugging sessions
               <span className="text-techno-cyan">/&gt;</span>
             </p>
-            <p className="text-text-muted text-sm">
+            <p className="text-text-muted text-xs sm:text-sm px-4">
               Made by Rudra • Powered by passion for AI & innovation
             </p>
-            <div className="inline-block px-4 py-2 border border-white/10 font-mono text-xs text-text-muted">
+            <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 border border-white/10 font-mono text-[10px] sm:text-xs text-text-muted">
               <span className="text-techno-cyan">[</span>
               {" "}SYSTEM_VERSION: 2.0.0{" "}
               <span className="text-techno-cyan">]</span>

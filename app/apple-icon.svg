@@ -1,0 +1,51 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <rect width="180" height="180" rx="40" fill="url(#bg-gradient)"/>
+  
+  <!-- Glowing effect -->
+  <rect width="180" height="180" rx="40" fill="url(#glow-gradient)" opacity="0.3"/>
+  
+  <!-- Border -->
+  <rect x="5" y="5" width="170" height="170" rx="35" stroke="url(#border-gradient)" stroke-width="4" fill="none"/>
+  
+  <!-- Letter R with techno style - scaled up -->
+  <path d="M50 45 L50 135 M50 45 L90 45 C104 45 112 53 112 67 C112 81 104 89 90 89 L50 89 M90 89 L118 135" 
+        stroke="#00F3FF" 
+        stroke-width="11" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        fill="none"/>
+  
+  <!-- Accent dots for tech feel -->
+  <circle cx="124" cy="56" r="5" fill="#00F3FF" opacity="0.6"/>
+  <circle cx="135" cy="67" r="4" fill="#00F3FF" opacity="0.4"/>
+  <circle cx="56" cy="124" r="4" fill="#00F3FF" opacity="0.4"/>
+  
+  <!-- Scanline effect -->
+  <line x1="0" y1="90" x2="180" y2="90" stroke="#00F3FF" stroke-width="1.5" opacity="0.2"/>
+  
+  <!-- Corner accents -->
+  <path d="M20 20 L35 20 M20 20 L20 35" stroke="#00F3FF" stroke-width="2" opacity="0.3"/>
+  <path d="M160 20 L145 20 M160 20 L160 35" stroke="#00F3FF" stroke-width="2" opacity="0.3"/>
+  <path d="M20 160 L35 160 M20 160 L20 145" stroke="#00F3FF" stroke-width="2" opacity="0.3"/>
+  <path d="M160 160 L145 160 M160 160 L160 145" stroke="#00F3FF" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0" y1="0" x2="180" y2="180">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    
+    <radialGradient id="glow-gradient" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#00F3FF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00F3FF" stop-opacity="0"/>
+    </radialGradient>
+    
+    <linearGradient id="border-gradient" x1="0" y1="0" x2="180" y2="180">
+      <stop offset="0%" stop-color="#00F3FF"/>
+      <stop offset="50%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#00F3FF"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -51,7 +51,7 @@ export default function SideDecorations() {
 
           {/* System Status */}
           <div className="flex flex-col items-center gap-8">
-            <div className="writing-mode-vertical text-[10px] font-mono text-text-muted tracking-[0.3em] uppercase rotate-180">
+            <div className="writing-mode-vertical text-[10px] font-mono text-text-muted tracking-[0.3em] uppercase">
               SYSTEM_ONLINE
             </div>
             

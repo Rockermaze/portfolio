@@ -8,12 +8,8 @@ export default function ProjectCard({
   title,
   desc,
   tech,
-  icon = "💡",
   link = "#",
-  isLive = false,
-  stars = 0,
-  forks = 0,
-  complexity = 3
+  isLive = false
 }) {
   // Generate stable ID based on title (no Math.random())
   const projectId = useMemo(() => {
@@ -30,47 +26,40 @@ export default function ProjectCard({
         className="group relative bg-dark-card/30 border border-white/5 p-10 transition-all duration-500 hover:bg-dark-card overflow-hidden h-full"
       >
         <div className="relative z-10">
-          <div className="flex justify-between items-start mb-10">
-            <div className="text-4xl filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:drop-shadow-[0_0_20px_rgba(0,243,255,0.3)]">
-              {icon}
-            </div>
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="text-xl font-bold text-white font-heading tracking-tight leading-tight">
+              {title}
+            </h3>
 
-            <div className="flex flex-col items-end gap-2">
-              <div className="font-mono text-[10px] text-white/20 tracking-widest uppercase">
+            <div className="flex flex-col items-end gap-2 ml-4">
+              <div className="font-mono text-[9px] text-white/20 tracking-widest uppercase whitespace-nowrap">
                 ID: {title.substring(0, 3).toUpperCase()}_0{projectId}
               </div>
 
               {isLive && (
-                <div className="px-2 py-1 bg-techno-lime/10 border border-techno-lime/30 text-techno-lime text-[8px] font-mono animate-pulse">
+                <div className="px-2 py-1 bg-techno-lime/10 border border-techno-lime/30 text-techno-lime text-[8px] font-mono animate-pulse whitespace-nowrap">
                   ● LIVE_NODE
                 </div>
               )}
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold mb-4 text-white font-heading tracking-tight">
-            {title}
-          </h3>
-
-          <p className="text-text-secondary mb-8 leading-relaxed text-sm font-light min-h-[60px]">
+          <p className="text-text-secondary mb-6 leading-relaxed text-sm font-light">
             {desc}
           </p>
 
-          {/* Complexity indicator */}
-          <div className="flex gap-1 mb-4">
-            <span className="text-[8px] font-mono text-text-muted uppercase tracking-widest mr-2">Complexity:</span>
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className={`w-3 h-1 ${i < complexity ? 'bg-techno-cyan' : 'bg-white/5'}`} />
-            ))}
+          {/* Technologies label */}
+          <div className="mb-4">
+            <span className="text-xs font-mono text-techno-cyan uppercase tracking-widest">Technologies:</span>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-8">
             {tech.split('•').map((t, i) => (
               <span
                 key={i}
-                className="px-0 py-0 text-[10px] text-techno-cyan/60 font-mono uppercase tracking-[0.2em]"
+                className="px-2.5 py-1 text-xs text-techno-cyan font-mono uppercase tracking-wide bg-techno-cyan/5 border border-techno-cyan/20"
               >
-                {t.trim()} {i < tech.split('•').length - 1 && "/"}
+                {t.trim()}
               </span>
             ))}
           </div>
@@ -85,11 +74,6 @@ export default function ProjectCard({
               EXPLORE_PROJECT()
               <span className="ml-3 group-hover/link:translate-x-1 transition-transform">→</span>
             </a>
-
-            <div className="flex gap-4 text-[10px] font-mono text-text-muted">
-              <span className="flex items-center gap-1">⭐ {stars}</span>
-              <span className="flex items-center gap-1">🔱 {forks}</span>
-            </div>
           </div>
         </div>
 
